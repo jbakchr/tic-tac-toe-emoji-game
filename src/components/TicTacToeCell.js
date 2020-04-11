@@ -2,8 +2,6 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 export const TicTacToeCell = (props) => {
-  console.log(props);
-
   let cell = null;
   if (props.cell.player) {
     cell = props.cell.player === 1 ? "👻" : "🧟";
@@ -21,6 +19,9 @@ export const TicTacToeCell = (props) => {
         justifyContent: "center",
         alignItems: "center",
       }}
+      onClick={() =>
+        props.onCellClick(props.player, props.rowIndex, props.columnIndex)
+      }
     >
       <p style={{ fontSize: 50 }}>{cell}</p>
     </Grid>

@@ -13,9 +13,22 @@ class App extends Component {
     player: 1,
   };
 
+  cellClickHandler = (player, rowIndex, columnIndex) => {
+    console.log("I'm clicked by:", player);
+    console.log("row:", rowIndex);
+    console.log("column:", columnIndex);
+  };
+
   render() {
-    const { ticTacToeCells, cellSize } = this.state;
-    return <TicTacToeGrid cells={ticTacToeCells} cellSize={cellSize} />;
+    const { ticTacToeCells, cellSize, player } = this.state;
+    return (
+      <TicTacToeGrid
+        cells={ticTacToeCells}
+        cellSize={cellSize}
+        onCellClick={this.cellClickHandler}
+        player={player}
+      />
+    );
   }
 }
 
