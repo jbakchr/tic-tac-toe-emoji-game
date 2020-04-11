@@ -45,7 +45,8 @@ class App extends Component {
   checkWinConditions = (cellsCopy, player) => {
     return (
       this.checkHorizontalWin(cellsCopy, player) ||
-      this.checkVerticalWin(cellsCopy, player)
+      this.checkVerticalWin(cellsCopy, player) ||
+      this.checkDescDiagonalWin(cellsCopy, player)
     );
   };
 
@@ -92,6 +93,22 @@ class App extends Component {
         } else {
           counter = 0;
           break;
+        }
+      }
+    }
+
+    return hasWon;
+  };
+
+  checkDescDiagonalWin = (cellSCody, player) => {
+    let counter = 0;
+    let hasWon = false;
+
+    for (let i = 0; i < cellSCody.length; i++) {
+      if (cellSCody[i][i].player === player) {
+        ++counter;
+        if (counter === 3) {
+          hasWon = true;
         }
       }
     }
