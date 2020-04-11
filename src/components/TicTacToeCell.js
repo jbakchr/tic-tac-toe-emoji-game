@@ -2,6 +2,13 @@ import React from "react";
 import { Grid } from "@material-ui/core";
 
 export const TicTacToeCell = (props) => {
+  console.log(props);
+
+  let cell = null;
+  if (props.cell.player) {
+    cell = props.cell.player === 1 ? "👻" : "🧟";
+  }
+
   return (
     <Grid
       item
@@ -15,7 +22,7 @@ export const TicTacToeCell = (props) => {
         alignItems: "center",
       }}
     >
-      tis
+      <p style={{ fontSize: 50 }}>{cell}</p>
     </Grid>
   );
 };

@@ -7,8 +7,13 @@ export const TicTacToeGrid = (props) => {
   const renderCells = () => {
     return props.cells.map((tableRow, i) => {
       return tableRow.map((element) => {
-        console.log("tablerow:", tableRow);
-        return <TicTacToeCell key={Math.random()} cellSize={props.cellSize} />;
+        return (
+          <TicTacToeCell
+            key={Math.random()}
+            cellSize={props.cellSize}
+            cell={element}
+          />
+        );
       });
     });
   };
