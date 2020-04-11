@@ -7,7 +7,13 @@ export const TicTacToeCell = (props) => {
       item
       xs={4}
       component="div"
-      style={{ height: props.cellSize, border: "1px solid black" }}
+      style={{
+        height: props.cellSize,
+        border: "1px solid black",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
       tis
     </Grid>
