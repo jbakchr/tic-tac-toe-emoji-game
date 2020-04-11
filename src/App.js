@@ -17,6 +17,19 @@ class App extends Component {
     console.log("I'm clicked by:", player);
     console.log("row:", rowIndex);
     console.log("column:", columnIndex);
+
+    // First we get a copy of "ticTacToeCells"
+    const cellsCopy = [...this.state.ticTacToeCells];
+
+    // Then we update this copy selected cell
+    cellsCopy[rowIndex][columnIndex].player = player;
+    console.log(cellsCopy);
+
+    // And finally we update state
+    this.setState({
+      ticTacToeCells: cellsCopy,
+      player: this.state.player === 1 ? 2 : 1,
+    });
   };
 
   render() {
