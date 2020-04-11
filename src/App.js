@@ -11,25 +11,65 @@ class App extends Component {
     ],
     cellSize: window.innerWidth / 3,
     player: 1,
+    gameOver: false,
   };
 
   cellClickHandler = (player, rowIndex, columnIndex) => {
-    console.log("I'm clicked by:", player);
-    console.log("row:", rowIndex);
-    console.log("column:", columnIndex);
+    if (this.state.gameOver) {
+      return;
+    }
 
     // First we get a copy of "ticTacToeCells"
     const cellsCopy = [...this.state.ticTacToeCells];
 
-    // Then we update this copy selected cell
+    // The we check if cell is already clicked
+    if (cellsCopy[rowIndex][columnIndex].player) {
+      return;
+    }
+
+    // If the cell hasn't been clicked Then we update the cell
     cellsCopy[rowIndex][columnIndex].player = player;
-    console.log(cellsCopy);
+
+    // Thereafte we check if the present player has won
+    const gameOver = this.checkWinConditions(cellsCopy, player);
+    console.log("game over", gameOver);
 
     // And finally we update state
     this.setState({
       ticTacToeCells: cellsCopy,
       player: this.state.player === 1 ? 2 : 1,
+      gameOver: gameOver,
     });
+  };
+
+  checkWinConditions = (cellsCopy, player) => {
+    const horizontalWin = this.checkHorizontalWin(cellsCopy, player);
+    return horizontalWin;
+  };
+
+  checkHorizontalWin = (cellsCopy, player) => {
+    let counter = 0;
+    let hasWon = false;
+
+    // Loop through each row in "ticTacToeCells" and check for 3 in a row
+    for (let i = 0; i < cellsCopy.length; i++) {
+      if (hasWon) {
+        break;
+      }
+      for (let j = 0; j < cellsCopy.length; j++) {
+        if (cellsCopy[i][j].player === player) {
+          ++counter;
+          if (counter === 3) {
+            hasWon = true;
+          }
+        } else {
+          counter = 0;
+          break;
+        }
+      }
+    }
+
+    return hasWon;
   };
 
   render() {
