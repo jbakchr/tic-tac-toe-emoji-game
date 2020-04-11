@@ -4,12 +4,10 @@ import { Grid } from "@material-ui/core";
 import { TicTacToeCell } from "./TicTacToeCell";
 
 export const TicTacToeGrid = (props) => {
-  console.log("cells:", props.cells);
-
   const renderCells = () => {
     return props.cells.map((tableRow, i) => {
       return tableRow.map((element) => {
-        console.log(i, element);
+        console.log("tablerow:", tableRow);
         return <TicTacToeCell key={Math.random()} cellSize={props.cellSize} />;
       });
     });
