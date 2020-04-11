@@ -43,8 +43,10 @@ class App extends Component {
   };
 
   checkWinConditions = (cellsCopy, player) => {
-    const horizontalWin = this.checkHorizontalWin(cellsCopy, player);
-    return horizontalWin;
+    return (
+      this.checkHorizontalWin(cellsCopy, player) ||
+      this.checkVerticalWin(cellsCopy, player)
+    );
   };
 
   checkHorizontalWin = (cellsCopy, player) => {
@@ -58,6 +60,31 @@ class App extends Component {
       }
       for (let j = 0; j < cellsCopy.length; j++) {
         if (cellsCopy[i][j].player === player) {
+          ++counter;
+          if (counter === 3) {
+            hasWon = true;
+          }
+        } else {
+          counter = 0;
+          break;
+        }
+      }
+    }
+
+    return hasWon;
+  };
+
+  checkVerticalWin = (cellsCopy, player) => {
+    let counter = 0;
+    let hasWon = false;
+
+    // Loop through each column and check for 3 in a row
+    for (let i = 0; i < cellsCopy.length; i++) {
+      if (hasWon) {
+        break;
+      }
+      for (let j = 0; j < cellsCopy.length; j++) {
+        if (cellsCopy[j][i].player === player) {
           ++counter;
           if (counter === 3) {
             hasWon = true;
