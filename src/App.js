@@ -148,7 +148,6 @@ class App extends Component {
   };
 
   playAgainHandler = () => {
-    console.log("Play again!");
     this.setState({
       ticTacToeCells: [
         [{ player: null }, { player: null }, { player: null }],
