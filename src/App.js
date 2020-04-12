@@ -13,11 +13,13 @@ class App extends Component {
     cellSize: window.innerWidth / 3,
     player: 1,
     gameOver: false,
+    drawCounter: 0,
   };
 
   cellClickHandler = (player, rowIndex, columnIndex) => {
-    // First we check if the game is already over
-    if (this.state.gameOver) {
+    // First we check if the game is already over or if "drawCounter" is equal to 9
+    // hence indicating that the game is a draw
+    if (this.state.gameOver || this.state.drawCounter === 9) {
       return;
     }
 
@@ -45,6 +47,7 @@ class App extends Component {
         ticTacToeCells: cellsCopy,
         player: this.state.player === 1 ? 2 : 1,
         gameOver: gameOver,
+        drawCounter: ++this.state.drawCounter,
       });
     }
   };
@@ -143,7 +146,20 @@ class App extends Component {
   };
 
   render() {
-    const { ticTacToeCells, cellSize, player, gameOver } = this.state;
+    const {
+      ticTacToeCells,
+      cellSize,
+      player,
+      gameOver,
+      drawCounter,
+    } = this.state;
+
+    let winSection = null;
+    if (gameOver) {
+      winSection = <WinSection player={player} />;
+    } else if (drawCounter === 9) {
+      winSection = <WinSection draw={true} />;
+    }
 
     return (
       <div>
@@ -153,7 +169,7 @@ class App extends Component {
           onCellClick={this.cellClickHandler}
           player={player}
         />
-        {gameOver ? <WinSection player={player} /> : null}
+        {winSection}
       </div>
     );
   }
