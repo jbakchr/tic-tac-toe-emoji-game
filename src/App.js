@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Typography } from "@material-ui/core";
 
 import { NavBar } from "./components/NavBar";
 import { TicTacToeGrid } from "./components/TicTacToeGrid";
@@ -179,6 +180,21 @@ class App extends Component {
       winSection = <WinSection draw={true} playAgain={this.playAgainHandler} />;
     }
 
+    let playerSelection = null;
+    if (!gameOver) {
+      let playerEmoji = player === 1 ? "👻" : "🧟";
+      playerSelection = (
+        <Typography
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: 15,
+            fontSize: 20,
+          }}
+        >{`${playerEmoji} to choose ..`}</Typography>
+      );
+    }
+
     return (
       <div>
         <NavBar />
@@ -188,6 +204,7 @@ class App extends Component {
           onCellClick={this.cellClickHandler}
           player={player}
         />
+        {playerSelection}
         {winSection}
       </div>
     );
