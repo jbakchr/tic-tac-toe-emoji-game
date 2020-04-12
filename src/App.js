@@ -16,6 +16,7 @@ class App extends Component {
   };
 
   cellClickHandler = (player, rowIndex, columnIndex) => {
+    // First we check if the game is already over
     if (this.state.gameOver) {
       return;
     }
@@ -33,7 +34,6 @@ class App extends Component {
 
     // Thereafte we check if the present player has won
     const gameOver = this.checkWinConditions(cellsCopy, player);
-    console.log("game over", gameOver);
 
     if (gameOver) {
       this.setState({
