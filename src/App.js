@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import { NavBar } from "./components/NavBar";
 import { TicTacToeGrid } from "./components/TicTacToeGrid";
 import { WinSection } from "./components/WinSection";
 
@@ -180,6 +181,7 @@ class App extends Component {
 
     return (
       <div>
+        <NavBar />
         <TicTacToeGrid
           cells={ticTacToeCells}
           cellSize={cellSize}

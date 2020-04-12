@@ -22,5 +22,9 @@ export const TicTacToeGrid = (props) => {
     });
   };
 
-  return <Grid container>{renderCells()}</Grid>;
+  return (
+    <Grid container style={{ border: "1px solid black", marginTop: 5 }}>
+      {renderCells()}
+    </Grid>
+  );
 };
