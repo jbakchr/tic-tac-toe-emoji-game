@@ -34,12 +34,18 @@ class App extends Component {
     const gameOver = this.checkWinConditions(cellsCopy, player);
     console.log("game over", gameOver);
 
-    // And finally we update state
-    this.setState({
-      ticTacToeCells: cellsCopy,
-      player: this.state.player === 1 ? 2 : 1,
-      gameOver: gameOver,
-    });
+    if (gameOver) {
+      this.setState({
+        ticTacToeCells: cellsCopy,
+        gameOver: gameOver,
+      });
+    } else {
+      this.setState({
+        ticTacToeCells: cellsCopy,
+        player: this.state.player === 1 ? 2 : 1,
+        gameOver: gameOver,
+      });
+    }
   };
 
   checkWinConditions = (cellsCopy, player) => {
@@ -136,7 +142,12 @@ class App extends Component {
   };
 
   render() {
-    const { ticTacToeCells, cellSize, player } = this.state;
+    const { ticTacToeCells, cellSize, player, gameOver } = this.state;
+
+    if (gameOver) {
+      console.log("Player wins:", player);
+    }
+
     return (
       <TicTacToeGrid
         cells={ticTacToeCells}
