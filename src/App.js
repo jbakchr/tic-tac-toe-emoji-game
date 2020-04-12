@@ -147,6 +147,20 @@ class App extends Component {
     return hasWon;
   };
 
+  playAgainHandler = () => {
+    console.log("Play again!");
+    this.setState({
+      ticTacToeCells: [
+        [{ player: null }, { player: null }, { player: null }],
+        [{ player: null }, { player: null }, { player: null }],
+        [{ player: null }, { player: null }, { player: null }],
+      ],
+      player: 1,
+      gameOver: false,
+      drawCounter: 0,
+    });
+  };
+
   render() {
     const {
       ticTacToeCells,
@@ -158,9 +172,11 @@ class App extends Component {
 
     let winSection = null;
     if (gameOver) {
-      winSection = <WinSection player={player} />;
+      winSection = (
+        <WinSection player={player} playAgain={this.playAgainHandler} />
+      );
     } else if (drawCounter === 9) {
-      winSection = <WinSection draw={true} />;
+      winSection = <WinSection draw={true} playAgain={this.playAgainHandler} />;
     }
 
     return (

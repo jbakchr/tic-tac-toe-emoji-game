@@ -19,7 +19,12 @@ export const WinSection = (props) => {
       }}
     >
       <Typography>{winCheck}</Typography>
-      <Button variant="contained" color="primary">
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={props.playAgain}
+        style={{ marginTop: 10 }}
+      >
         Play again
       </Button>
     </Box>
