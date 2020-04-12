@@ -27,7 +27,7 @@ class App extends Component {
       return;
     }
 
-    // If the cell hasn't been clicked Then we update the cell
+    // If the cell hasn't been clicked then we update the cell
     cellsCopy[rowIndex][columnIndex].player = player;
 
     // Thereafte we check if the present player has won
