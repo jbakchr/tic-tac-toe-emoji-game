@@ -43,11 +43,13 @@ class App extends Component {
         gameOver: gameOver,
       });
     } else {
-      this.setState({
-        ticTacToeCells: cellsCopy,
-        player: this.state.player === 1 ? 2 : 1,
-        gameOver: gameOver,
-        drawCounter: ++this.state.drawCounter,
+      this.setState((prevState) => {
+        return {
+          ticTacToeCells: cellsCopy,
+          player: this.state.player === 1 ? 2 : 1,
+          gameOver: gameOver,
+          drawCounter: ++prevState.drawCounter,
+        };
       });
     }
   };
