@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { TicTacToeGrid } from "./components/TicTacToeGrid";
+import { WinSection } from "./components/WinSection";
 
 class App extends Component {
   state = {
@@ -144,17 +145,16 @@ class App extends Component {
   render() {
     const { ticTacToeCells, cellSize, player, gameOver } = this.state;
 
-    if (gameOver) {
-      console.log("Player wins:", player);
-    }
-
     return (
-      <TicTacToeGrid
-        cells={ticTacToeCells}
-        cellSize={cellSize}
-        onCellClick={this.cellClickHandler}
-        player={player}
-      />
+      <div>
+        <TicTacToeGrid
+          cells={ticTacToeCells}
+          cellSize={cellSize}
+          onCellClick={this.cellClickHandler}
+          player={player}
+        />
+        {gameOver ? <WinSection player={player} /> : null}
+      </div>
     );
   }
 }
