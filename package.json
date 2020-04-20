@@ -1,5 +1,5 @@
 {
-  "name": "new-grid-trial",
+  "name": "tic-tac-toe-emoji-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
