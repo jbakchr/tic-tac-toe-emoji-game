@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import { NavBar } from "./components/NavBar";
+import { NavBar } from "./components/NavBar/NavBar";
 import { StartPage } from "./pages/StartPage";
 import GamePage from "./pages/GamePage";
 

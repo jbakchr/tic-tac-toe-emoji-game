@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Typography } from "@material-ui/core";
 
-import { TicTacToeGrid } from "../components/TicTacToeGrid";
-import { WinSection } from "../components/WinSection";
+import { TicTacToeGrid } from "../components/Game/TicTacToeGrid";
+import { WinSection } from "../components/Game/WinSection";
 
 class GamePage extends Component {
   state = {
