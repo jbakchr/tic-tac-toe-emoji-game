@@ -50,7 +50,7 @@ class App extends Component {
           ticTacToeCells: cellsCopy,
           player: this.state.player === 1 ? 2 : 1,
           gameOver: gameOver,
-          drawCounter: ++prevState.drawCounter,
+          drawCounter: prevState.drawCounter++,
         };
       });
     }
@@ -170,6 +170,7 @@ class App extends Component {
       gameOver,
       drawCounter,
     } = this.state;
+    console.log("drawCounter:", drawCounter);
 
     let winSection = null;
     if (gameOver) {
@@ -181,7 +182,7 @@ class App extends Component {
     }
 
     let playerSelection = null;
-    if (!gameOver) {
+    if (!gameOver && !drawCounter === 9) {
       let playerEmoji = player === 1 ? "👻" : "🧟";
       playerSelection = (
         <Typography
