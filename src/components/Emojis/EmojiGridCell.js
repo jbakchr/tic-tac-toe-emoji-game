@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
 
-export const EmojiGridCell = ({ gridSize, emoji }) => {
+export const EmojiGridCell = ({ gridSize, emoji, onEmojiClick, index }) => {
   return (
     <Grid
       item
@@ -14,6 +14,7 @@ export const EmojiGridCell = ({ gridSize, emoji }) => {
         alignItems: "center",
         fontSize: 50,
       }}
+      onClick={() => onEmojiClick(index)}
     >
       {emoji.character}
     </Grid>

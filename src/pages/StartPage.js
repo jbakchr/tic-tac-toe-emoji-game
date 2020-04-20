@@ -2,7 +2,7 @@ import React from "react";
 
 import { EmojiGrid } from "../components/Emojis/EmojiGrid";
 
-export const StartPage = ({ emojis, players, gridSize }) => {
+export const StartPage = ({ emojis, players, gridSize, onEmojiClick }) => {
   const renderHeader = () => {
     let header;
     if (!players[0].emoji) {
@@ -20,7 +20,11 @@ export const StartPage = ({ emojis, players, gridSize }) => {
       <h2 style={{ textAlign: "center" }}>{renderHeader()}</h2>
       <p>Player one emoji: </p>
       <p>Player two emoji: </p>
-      <EmojiGrid emojis={emojis} gridSize={gridSize} />
+      <EmojiGrid
+        emojis={emojis}
+        gridSize={gridSize}
+        onEmojiClick={onEmojiClick}
+      />
     </div>
   );
 };
