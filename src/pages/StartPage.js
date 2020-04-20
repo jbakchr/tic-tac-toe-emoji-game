@@ -1,11 +1,21 @@
 import React from "react";
 
-export const StartPage = (props) => {
-  console.log("emojis", props.emojis);
+import { EmojiGrid } from "../components/Emojis/EmojiGrid";
+
+export const StartPage = ({ emojis, players, gridSize }) => {
+  let header;
+  if (!players[0].emoji) {
+    header = "Please select an emoji player one";
+  } else if (!players[1].emoji) {
+    header = "Please select an emoji player two";
+  } else {
+    header = "Start tha game!";
+  }
 
   return (
     <div>
-      <h1>Please select an emoji</h1>
+      <h2 style={{ textAlign: "center" }}>{header}</h2>
+      <EmojiGrid emojis={emojis} gridSize={gridSize} />
     </div>
   );
 };

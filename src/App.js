@@ -7,6 +7,7 @@ import GamePage from "./pages/GamePage";
 
 class App extends Component {
   state = {
+    gridSize: window.innerWidth / 3,
     emojis: [
       { character: "👻", selected: false },
       { character: "💩", selected: false },
@@ -22,13 +23,13 @@ class App extends Component {
   };
 
   render() {
-    const { emojis, players } = this.state;
+    const { emojis, players, gridSize } = this.state;
     return (
       <BrowserRouter>
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <StartPage emojis={emojis} players={players} />
+            <StartPage emojis={emojis} players={players} gridSize={gridSize} />
           </Route>
           <Route path="/game">
             <GamePage />
