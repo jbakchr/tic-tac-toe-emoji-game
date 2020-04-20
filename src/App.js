@@ -6,13 +6,29 @@ import { StartPage } from "./pages/StartPage";
 import GamePage from "./pages/GamePage";
 
 class App extends Component {
+  state = {
+    emojis: [
+      { character: "👻", selected: false },
+      { character: "💩", selected: false },
+      { character: "👽", selected: false },
+      { character: "👿", selected: false },
+      { character: "💀", selected: false },
+      { character: "👹", selected: false },
+    ],
+    players: [
+      { player: 1, emoji: "" },
+      { player: 2, emoji: "" },
+    ],
+  };
+
   render() {
+    const { emojis, players } = this.state;
     return (
       <BrowserRouter>
         <NavBar />
         <Switch>
           <Route exact path="/">
-            <StartPage />
+            <StartPage emojis={emojis} players={players} />
           </Route>
           <Route path="/game">
             <GamePage />

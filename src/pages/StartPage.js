@@ -1,9 +1,11 @@
 import React from "react";
 
-export const StartPage = () => {
+export const StartPage = (props) => {
+  console.log("emojis", props.emojis);
+
   return (
     <div>
-      <p>Start page</p>
+      <h1>Please select an emoji</h1>
     </div>
   );
 };
