@@ -50,7 +50,7 @@ class App extends Component {
           ticTacToeCells: cellsCopy,
           player: this.state.player === 1 ? 2 : 1,
           gameOver: gameOver,
-          drawCounter: prevState.drawCounter++,
+          drawCounter: ++prevState.drawCounter,
         };
       });
     }
