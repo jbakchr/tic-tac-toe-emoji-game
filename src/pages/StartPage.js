@@ -18,8 +18,8 @@ export const StartPage = ({ emojis, players, gridSize, onEmojiClick }) => {
   return (
     <div>
       <h2 style={{ textAlign: "center" }}>{renderHeader()}</h2>
-      <p>Player one emoji: </p>
-      <p>Player two emoji: </p>
+      <p>Player one emoji: {players[0].emoji} </p>
+      <p>Player two emoji: {players[1].emoji} </p>
       <EmojiGrid
         emojis={emojis}
         gridSize={gridSize}
